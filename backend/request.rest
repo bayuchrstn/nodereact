@@ -1,0 +1,50 @@
+###
+GET http://localhost:5000/general?page=1&size=10&search=&sort=&direction=
+
+###
+DELETE http://localhost:5000/users/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYmF5dWNocnN0bkBnbWFpbC5jb20iLCJpYXQiOjE2NTI3NTY3MDksImV4cCI6MTY1Mjc1NzAwOX0.Ab6SmnvsO58LKM9pst4OYoeJ1u9XlHeQpq6iRZVkP9Q
+
+###
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYmF5dWNocnN0bkBnbWFpbC5jb20iLCJpYXQiOjE2NTI3NTY3MDksImV4cCI6MTY1Mjc1NzAwOX0.Ab6SmnvsO58LKM9pst4OYoeJ1u9XlHeQpq6iRZVkP9Q
+
+
+###
+POST http://localhost:5000/general
+Content-Type: application/json
+
+{
+    "name":"test767",
+    "value":"1"
+}
+###
+PUT  http://localhost:5000/general/1
+Content-Type: application/json
+
+{
+    "name":"PPN",
+    "value":"1"
+}
+
+###
+DELETE  http://localhost:5000/general/1
+
+###
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+"nama":"", 
+"email": "bayuchrstn@gmail.com", "password" : "123456", 
+"confirm_password" : "123456"
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+"email": "bayuchrstn@gmail.com", 
+"password" : "123456"
+}
