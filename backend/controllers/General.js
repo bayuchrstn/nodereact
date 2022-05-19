@@ -263,8 +263,6 @@ const upload = async (req, res) => {
 
   const duplicated = await duplicate;
   const message = await msg;
-  console.log(message);
-  console.log(duplicated);
   if (await msg == null && await duplicate == null) {
     GeneralModel.bulkCreate(dataArray)
       .then((result) => {
