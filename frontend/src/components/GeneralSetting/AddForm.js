@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { postSettingCreate, putSettingUpdate } from "../../actions/getsetAction";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { postSettingCreate, putSettingUpdate, getSettingsList } from "../../actions/getsetAction";
 
 const AddForm = (props) => {
   const [id, setId] = useState("");
@@ -51,11 +49,14 @@ const AddForm = (props) => {
     } else {
       dispatch(postSettingCreate({ name: name, value: value, desc: desc }));
     }
+    setTimeout(() => {
+      dispatch(getSettingsList(props.page, props.size, props.search, props.sortname, props.direction));
+    }, 1000);
+
   };
 
   return (
     <Form onSubmit={(event) => handleSubmit(event)}>
-      <ToastContainer autoClose={1000} />
       <FormGroup>
         <Label for="formName">Name</Label>
         <Input

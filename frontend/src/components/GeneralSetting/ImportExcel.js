@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col, Input, FormText } from "reactstrap";
 import { connect } from "react-redux";
 import { useDispatch } from "react-redux";
-import { importSetting } from "../../actions/getsetAction";
+import { importSetting, getSettingsList } from "../../actions/getsetAction";
 
 const ImportExcel = (props) => {
     const [backdrop] = useState("static");
@@ -19,6 +19,9 @@ const ImportExcel = (props) => {
             formData.append("file", selectedFile);
             dispatch(importSetting(formData));
             setKey(new Date());
+            setTimeout(() => {
+                dispatch(getSettingsList(props.page, props.size, props.search, props.sortname, props.direction));
+            }, 1000);
         }
 
     };

@@ -24,6 +24,17 @@ export const addSetting = () => {
   };
 };
 export const getSettingsList = (page,size,search,sort,direction) => {
+  if(!page){
+    page = 1;
+  }if(!size){
+    size=10;
+  }if(!search){
+    search = '';
+  }if(!sort){
+    sort = 'id';
+  }if(!direction){
+    direction ='asc';
+  }
   return (dispatch) => {
     axios
       .get("http://localhost:5000/general/?page="+page+"&size="+size+"&search="+search+"&sort="+sort+"&direction="+direction)
@@ -89,7 +100,6 @@ export const postSettingCreate = (data) => {
           },
         });
         notifySuccess(response.data.msg);
-        dispatch(getSettingsList());
       })
       .catch(function (error) {
         dispatch({
@@ -117,7 +127,6 @@ export const putSettingUpdate = (data) => {
           },
         });
         notifySuccess(response.data.msg);
-        dispatch(getSettingsList());
       })
       .catch(function (error) {
         dispatch({
@@ -158,7 +167,6 @@ export const importSetting = (data) => {
       .post("http://localhost:5000/general/upload",data)
       .then(function (response) {
         notifySuccess(response.data.msg);
-        dispatch(getSettingsList());
       })
       .catch(function (error) {
         notifyError(error.response.data.msg);

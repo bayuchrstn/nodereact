@@ -128,6 +128,7 @@ const DataTableComponent = (props) => {
         filterText={filterText}
       />
     );
+    // eslint-disable-next-line
   }, [filterText, resetPaginationToggle]);
 
   const handleClick = (dispatch, id) => {
@@ -302,12 +303,12 @@ const DataTableComponent = (props) => {
     if (direction) {
       dispatch(getSettingsList(page, size, filterText, sortname, direction));
     }
-
+  // eslint-disable-next-line
   }, [direction,setDirection]);
 
   useEffect(() => {
       dispatch(getSettingsList(page, size, filterText, sortname, direction));
-
+  // eslint-disable-next-line
   }, [setFilterText, filterText]);
 
 
@@ -361,10 +362,10 @@ const DataTableComponent = (props) => {
       >
         <ModalHeader>General Setting</ModalHeader>
         <ModalBody>
-          <AddForm toggle={toggle} />
+          <AddForm toggle={toggle} page={page} size={size} search={filterText} sort={sortname} direction={direction}/>
         </ModalBody>
       </Modal>
-      <ImportExcel toggle={toggleImport} modal={modalImport} />
+      <ImportExcel toggle={toggleImport} modal={modalImport} page={page} size={size} search={filterText} sort={sortname} direction={direction} />
       <DataTable
         columns={columns}
         data={filteredItems}
