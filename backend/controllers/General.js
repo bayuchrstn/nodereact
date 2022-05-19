@@ -2,8 +2,8 @@ const { GeneralModel } = require("../models");
 const Validator = require("fastest-validator");
 const v = new Validator();
 const Sequelize = require("sequelize");
-const Op = Sequelize.Op;
 const readXlsxFile = require("read-excel-file/node");
+const fs = require('fs');
 
 const sequelize = new Sequelize("db_project", "root", "", {
   host: "localhost",
@@ -293,6 +293,7 @@ const upload = async (req, res) => {
     } else {
       res.status(400).json({ msg: message + ' & ' + duplicated })
     }
+    fs.unlinkSync(path);
 
   }
 
